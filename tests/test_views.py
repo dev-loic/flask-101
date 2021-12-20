@@ -25,3 +25,13 @@ class TestViews(TestCase):
     def test_read_one_non_existing_product(self):
         response = self.client.get("/api/v1/products/0")
         self.assert_404(response)
+        
+    # We cannot activate this one until we do not have a real db
+    # def test_delete_one_existing_product(self):
+    #     response = self.client.delete("/api/v1/products/1")
+    #     # self.assert_204(response)
+    #     print(response)
+
+    def test_delete_one_non_existing_product(self):
+        response = self.client.delete("/api/v1/products/123")
+        self.assert_404(response)
